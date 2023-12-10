@@ -28,7 +28,7 @@ jobs:
       # pytest -> JUnit xml形式で結果を出力
       - name: PyTest
         run: |
-          python -m pytest test --junit-xml results/pytest.xml
+          python -m pytest test --junit-xml pytest.xml | tee pytest-coverage.txt
         continue-on-error: true
 
       # テスト結果の表示
@@ -37,15 +37,12 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Unit Test Results (Python 3.7)
-          path: results/*.xml
-
-      - name: Download Artifacts
-        if: success() || failure()
-        uses: actions/download-artifact@v2
+          path: pytest.xml
+          
+      - name: Pytest coverage comment
+        uses: MishaKav/pytest-coverage-comment@main
         with:
-          path: artifacts
-
-      - name: Publish Unit Test Results
-        uses: mikepenz/action-junit-report@v2
-        with:
-          report_paths: artifacts/**/*.xml        
+          pytest-coverage-path: ./pytest-coverage.txt
+          junitxml-path: ./pytest.xml          
+          
+          
