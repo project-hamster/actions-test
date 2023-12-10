@@ -1,6 +1,6 @@
 
 def echo_hello():
-    return "hello"
+    return "hel"
 
 
 if __name__ == '__main__':
