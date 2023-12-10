@@ -30,7 +30,7 @@ jobs:
       # pytest -> JUnit xml形式で結果を出力
       - name: PyTest
         run: |
-          python -m pytest test --cov --cov-branch --cov-report=term-missing --junitxml=pytest.xml test | tee pytest-coverage.txt
+          python -m pytest --cov --cov-branch --cov-report=term-missing --junitxml=pytest.xml test | tee pytest-coverage.txt
         continue-on-error: true
 
       # テスト結果の表示
