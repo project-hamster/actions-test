@@ -47,7 +47,7 @@ jobs:
           junitxml-path: pytest.xml          
           
       - name: Check are all Tests passed
-        if: ${{ steps.coverageComment.outputs.failures }}
         run: |
-          echo 'HELLO'
+          echo "${{ steps.coverageComment.outputs.failures }}"
+
           
