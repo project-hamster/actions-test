@@ -34,13 +34,13 @@ jobs:
 
       #テスト結果の表示
       - name: Upload Unit Test Results
-        id: coverageComment
         uses: actions/upload-artifact@v2
         with:
           name: Unit Test Results (Python 3.7)
           path: pytest.xml
           
       - name: Pytest coverage comment
+        id: coverageComment
         uses: MishaKav/pytest-coverage-comment@main
         with:
           pytest-coverage-path: pytest-coverage.txt
