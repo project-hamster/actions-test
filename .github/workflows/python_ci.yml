@@ -47,9 +47,9 @@ jobs:
           junitxml-path: pytest.xml          
           
       - name: Check the output coverage
+        if: ${{ steps.coverageComment.outputs.errors != 0 }}  || ${{ steps.coverageComment.outputs.failures != 0 }} 
         run: |
-          echo "Coverage Errors - ${{ steps.coverageComment.outputs.errors }}"
-          echo "Coverage Failures - ${{ steps.coverageComment.outputs.failures }}"
+          echo 'hello'
 
 
           
