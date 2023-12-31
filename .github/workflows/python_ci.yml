@@ -30,21 +30,20 @@ jobs:
       # pytest -> JUnit xml形式で結果を出力
       - name: PyTest
         run: |
-          python -m pytest --cov --cov-branch --cov-report=term-missing --junitxml=pytest.xml test | tee pytest-coverage.txt
-        continue-on-error: false
+          python -m pytest --cov --cov-branch --cov-report=term-missing --junitxml=pytest.xml test
 
       # テスト結果の表示
-      - name: Upload Unit Test Results
-        if: ${{ always() }}
-        uses: actions/upload-artifact@v2
-        with:
-          name: Unit Test Results (Python 3.7)
-          path: pytest.xml
+      # - name: Upload Unit Test Results
+      #   if: ${{ always() }}
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: Unit Test Results (Python 3.7)
+      #     path: pytest.xml
           
-      - name: Pytest coverage comment
-        uses: MishaKav/pytest-coverage-comment@main
-        with:
-          pytest-coverage-path: pytest-coverage.txt
-          junitxml-path: pytest.xml          
+      # - name: Pytest coverage comment
+      #   uses: MishaKav/pytest-coverage-comment@main
+      #   with:
+      #     pytest-coverage-path: pytest-coverage.txt
+      #     junitxml-path: pytest.xml          
           
           
