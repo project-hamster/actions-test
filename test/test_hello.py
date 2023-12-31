@@ -5,5 +5,5 @@ from app import hello
 
 def test_echo_hello():
     actual = hello.echo_hello()
-    expect = "hello"
+    expect = "hllo"
     assert actual == expect
