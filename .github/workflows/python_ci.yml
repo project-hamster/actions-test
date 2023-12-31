@@ -4,7 +4,8 @@ on:
   pull_request:
     types: [opened, reopened, synchronize]
 
-permissions: write-all # これないとPRにコメントできないらしい
+permissions: 
+  pull-requests: write
 
 jobs:
   pytest:
